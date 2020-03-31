@@ -1,0 +1,38 @@
+<mapper namespace="com.lagou.dao.IUserDao">
+
+    <!--sql的唯一标识：namespace.id来组成 ： statementId-->
+    <select id="findAll" resultType="com.lagou.pojo.User" >
+        select * from user
+    </select>
+
+
+    <!--
+        User user = new User()
+        user.setId(1);
+        user.setUsername("zhangsan")
+    -->
+    <select id="findByCondition" resultType="com.lagou.pojo.User" paramterType="com.lagou.pojo.User">
+        select * from user where id = #{id} and username = #{username}
+    </select>
+
+    <update id="update" paramterType="com.lagou.pojo.User" resultType="int">
+        update user set username=#{username} where id=#{id}
+    </update>
+
+    <insert id="insert" paramterType="com.lagou.pojo.User" resultType="int">
+        insert into user
+        values(
+        #{id},
+        #{username}
+       )
+
+    </insert>
+
+    <delete id="delete" paramterType="com.lagou.pojo.User" resultType="int">
+        delete from user where
+
+                id=#{id}
+
+    </delete>
+
+</mapper>
